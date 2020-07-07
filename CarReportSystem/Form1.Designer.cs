@@ -47,11 +47,14 @@
             this.ofdOpenImage = new System.Windows.Forms.OpenFileDialog();
             this.rbToyota = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbNissan = new System.Windows.Forms.RadioButton();
-            this.rbHonda = new System.Windows.Forms.RadioButton();
-            this.rbSubaru = new System.Windows.Forms.RadioButton();
-            this.rbGaikoku = new System.Windows.Forms.RadioButton();
             this.rbOther = new System.Windows.Forms.RadioButton();
+            this.rbGaikoku = new System.Windows.Forms.RadioButton();
+            this.rbSubaru = new System.Windows.Forms.RadioButton();
+            this.rbHonda = new System.Windows.Forms.RadioButton();
+            this.rbNissan = new System.Windows.Forms.RadioButton();
+            this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
+            this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -97,9 +100,12 @@
             this.btOpenArticle.TabIndex = 5;
             this.btOpenArticle.Text = "開く";
             this.btOpenArticle.UseVisualStyleBackColor = true;
+            this.btOpenArticle.Click += new System.EventHandler(this.btOpenArticle_Click);
             // 
             // dgvReport
             // 
+            this.dgvReport.AllowUserToAddRows = false;
+            this.dgvReport.AllowUserToDeleteRows = false;
             this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReport.Location = new System.Drawing.Point(123, 291);
             this.dgvReport.Name = "dgvReport";
@@ -177,6 +183,7 @@
             this.btSaveArticle.TabIndex = 5;
             this.btSaveArticle.Text = "保存";
             this.btSaveArticle.UseVisualStyleBackColor = true;
+            this.btSaveArticle.Click += new System.EventHandler(this.btSaveArticle_Click);
             // 
             // label7
             // 
@@ -205,6 +212,7 @@
             this.btUpdateArticle.TabIndex = 5;
             this.btUpdateArticle.Text = "修正";
             this.btUpdateArticle.UseVisualStyleBackColor = true;
+            this.btUpdateArticle.Click += new System.EventHandler(this.btUpdateArticle_Click);
             // 
             // btDeleteArticle
             // 
@@ -277,38 +285,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // rbNissan
+            // rbOther
             // 
-            this.rbNissan.AutoSize = true;
-            this.rbNissan.Location = new System.Drawing.Point(59, 9);
-            this.rbNissan.Name = "rbNissan";
-            this.rbNissan.Size = new System.Drawing.Size(47, 16);
-            this.rbNissan.TabIndex = 9;
-            this.rbNissan.TabStop = true;
-            this.rbNissan.Text = "日産";
-            this.rbNissan.UseVisualStyleBackColor = true;
-            // 
-            // rbHonda
-            // 
-            this.rbHonda.AutoSize = true;
-            this.rbHonda.Location = new System.Drawing.Point(112, 9);
-            this.rbHonda.Name = "rbHonda";
-            this.rbHonda.Size = new System.Drawing.Size(51, 16);
-            this.rbHonda.TabIndex = 9;
-            this.rbHonda.TabStop = true;
-            this.rbHonda.Text = "ホンダ";
-            this.rbHonda.UseVisualStyleBackColor = true;
-            // 
-            // rbSubaru
-            // 
-            this.rbSubaru.AutoSize = true;
-            this.rbSubaru.Location = new System.Drawing.Point(169, 9);
-            this.rbSubaru.Name = "rbSubaru";
-            this.rbSubaru.Size = new System.Drawing.Size(52, 16);
-            this.rbSubaru.TabIndex = 10;
-            this.rbSubaru.TabStop = true;
-            this.rbSubaru.Text = "スバル";
-            this.rbSubaru.UseVisualStyleBackColor = true;
+            this.rbOther.AutoSize = true;
+            this.rbOther.Location = new System.Drawing.Point(281, 8);
+            this.rbOther.Name = "rbOther";
+            this.rbOther.Size = new System.Drawing.Size(54, 16);
+            this.rbOther.TabIndex = 12;
+            this.rbOther.TabStop = true;
+            this.rbOther.Text = "その他";
+            this.rbOther.UseVisualStyleBackColor = true;
             // 
             // rbGaikoku
             // 
@@ -321,16 +307,51 @@
             this.rbGaikoku.Text = "外車";
             this.rbGaikoku.UseVisualStyleBackColor = true;
             // 
-            // rbOther
+            // rbSubaru
             // 
-            this.rbOther.AutoSize = true;
-            this.rbOther.Location = new System.Drawing.Point(281, 8);
-            this.rbOther.Name = "rbOther";
-            this.rbOther.Size = new System.Drawing.Size(54, 16);
-            this.rbOther.TabIndex = 12;
-            this.rbOther.TabStop = true;
-            this.rbOther.Text = "その他";
-            this.rbOther.UseVisualStyleBackColor = true;
+            this.rbSubaru.AutoSize = true;
+            this.rbSubaru.Location = new System.Drawing.Point(169, 9);
+            this.rbSubaru.Name = "rbSubaru";
+            this.rbSubaru.Size = new System.Drawing.Size(52, 16);
+            this.rbSubaru.TabIndex = 10;
+            this.rbSubaru.TabStop = true;
+            this.rbSubaru.Text = "スバル";
+            this.rbSubaru.UseVisualStyleBackColor = true;
+            // 
+            // rbHonda
+            // 
+            this.rbHonda.AutoSize = true;
+            this.rbHonda.Location = new System.Drawing.Point(112, 9);
+            this.rbHonda.Name = "rbHonda";
+            this.rbHonda.Size = new System.Drawing.Size(51, 16);
+            this.rbHonda.TabIndex = 9;
+            this.rbHonda.TabStop = true;
+            this.rbHonda.Text = "ホンダ";
+            this.rbHonda.UseVisualStyleBackColor = true;
+            // 
+            // rbNissan
+            // 
+            this.rbNissan.AutoSize = true;
+            this.rbNissan.Location = new System.Drawing.Point(59, 9);
+            this.rbNissan.Name = "rbNissan";
+            this.rbNissan.Size = new System.Drawing.Size(47, 16);
+            this.rbNissan.TabIndex = 9;
+            this.rbNissan.TabStop = true;
+            this.rbNissan.Text = "日産";
+            this.rbNissan.UseVisualStyleBackColor = true;
+            // 
+            // ofdOpenData
+            // 
+            this.ofdOpenData.FileName = "openFileDialog1";
+            this.ofdOpenData.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdOpenData_FileOk);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(755, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // Form1
             // 
@@ -359,8 +380,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "試乗レポート管理システム";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -401,6 +425,9 @@
         private System.Windows.Forms.RadioButton rbSubaru;
         private System.Windows.Forms.RadioButton rbHonda;
         private System.Windows.Forms.RadioButton rbNissan;
+        private System.Windows.Forms.OpenFileDialog ofdOpenData;
+        private System.Windows.Forms.SaveFileDialog sfdSaveData;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }
 

@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarReportSystem {
-    class Car {
+	[Serializable]
+	class Car {
 		[System.ComponentModel.DisplayName("日付")]
-		public Nullable<DateTime> Date { get; set; }
+		public DateTime Date { get; set; }
 		//メーカ
 		[System.ComponentModel.DisplayName("記録者")]
 		public string RecoderName { get; set; }
@@ -29,6 +30,7 @@ namespace CarReportSystem {
 		トヨタ,
 		日産,
 		ホンダ,
+		スバル,
 		外車,
 		その他
 	}
