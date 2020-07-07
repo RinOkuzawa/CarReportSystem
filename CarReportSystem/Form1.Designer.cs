@@ -46,7 +46,7 @@
             this.btDeleteImage = new System.Windows.Forms.Button();
             this.ofdOpenImage = new System.Windows.Forms.OpenFileDialog();
             this.rbToyota = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MakerG = new System.Windows.Forms.GroupBox();
             this.rbOther = new System.Windows.Forms.RadioButton();
             this.rbGaikoku = new System.Windows.Forms.RadioButton();
             this.rbSubaru = new System.Windows.Forms.RadioButton();
@@ -57,7 +57,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.MakerG.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -112,6 +112,7 @@
             this.dgvReport.RowTemplate.Height = 21;
             this.dgvReport.Size = new System.Drawing.Size(619, 186);
             this.dgvReport.TabIndex = 6;
+            this.dgvReport.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvReport_MouseClick);
             // 
             // pictureBox1
             // 
@@ -270,20 +271,19 @@
             this.rbToyota.Text = "トヨタ";
             this.rbToyota.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // MakerG
             // 
-            this.groupBox1.Controls.Add(this.rbOther);
-            this.groupBox1.Controls.Add(this.rbGaikoku);
-            this.groupBox1.Controls.Add(this.rbSubaru);
-            this.groupBox1.Controls.Add(this.rbHonda);
-            this.groupBox1.Controls.Add(this.rbNissan);
-            this.groupBox1.Controls.Add(this.rbToyota);
-            this.groupBox1.Location = new System.Drawing.Point(94, 95);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(342, 30);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.MakerG.Controls.Add(this.rbOther);
+            this.MakerG.Controls.Add(this.rbGaikoku);
+            this.MakerG.Controls.Add(this.rbSubaru);
+            this.MakerG.Controls.Add(this.rbHonda);
+            this.MakerG.Controls.Add(this.rbNissan);
+            this.MakerG.Controls.Add(this.rbToyota);
+            this.MakerG.Location = new System.Drawing.Point(94, 95);
+            this.MakerG.Name = "MakerG";
+            this.MakerG.Size = new System.Drawing.Size(342, 30);
+            this.MakerG.TabIndex = 10;
+            this.MakerG.TabStop = false;
             // 
             // rbOther
             // 
@@ -358,7 +358,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 518);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.MakerG);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvReport);
             this.Controls.Add(this.btSaveArticle);
@@ -387,8 +387,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.MakerG.ResumeLayout(false);
+            this.MakerG.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,7 +419,7 @@
         private System.Windows.Forms.Button btDeleteImage;
         private System.Windows.Forms.OpenFileDialog ofdOpenImage;
         private System.Windows.Forms.RadioButton rbToyota;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox MakerG;
         private System.Windows.Forms.RadioButton rbOther;
         private System.Windows.Forms.RadioButton rbGaikoku;
         private System.Windows.Forms.RadioButton rbSubaru;

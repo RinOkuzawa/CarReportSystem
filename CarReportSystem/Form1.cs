@@ -40,6 +40,9 @@ namespace CarReportSystem {
         }
         //ラジオボタンメソッド
         private CarMaker RbCheck() {
+            //LINQ
+            //RadioButton select = (MakerG.Controls.Cast<RadioButton>().FirstOrDefault(RadioButton => rb.Checked));
+            //return (Car.CarMaker)int.Parse(select.Tag.ToString());
             Car car = new Car();
             if (rbToyota.Checked) {
                 return CarMaker.トヨタ;
@@ -141,10 +144,6 @@ namespace CarReportSystem {
             ofdOpenImage.ShowDialog();
         }
 
-        private void ofdOpenImage_FileOk(object sender, CancelEventArgs e) {
-                this.Activate();
-                pictureBox1.Image = Image.FromFile(ofdOpenImage.FileName);        
-        }
         //画像削除ボタン
         private void btDeleteImage_Click(object sender, EventArgs e) {
             this.pictureBox1.Image = null;
@@ -161,7 +160,7 @@ namespace CarReportSystem {
                         //dgvのデータの中にデータをバインドされた_Carsを入れる
                         dgvReport.DataSource = _Cars;
                         //選択されている箇所を各コントロールへ表示
-                        dgvReport_Click(sender,e);
+                        dgvReport_MouseClick(sender,e);
                     } catch (SerializationException a) {
                         Console.WriteLine("Failed to deserialize. Reason: " + a.Message);
                         throw;
@@ -187,12 +186,25 @@ namespace CarReportSystem {
             }
         }
 
+        private void Form1_Load(object sender, EventArgs e) {
+            initButton();
+        }
+        private void ofdOpenImage_FileOk(object sender, CancelEventArgs e) {
+            this.Activate();
+            pictureBox1.Image = Image.FromFile(ofdOpenImage.FileName);
+        }
         private void ofdOpenData_FileOk(object sender, CancelEventArgs e) {
             this.Activate();
         }
-        //データを選択したら表示
-        public void dgvReport_Click(object sender, EventArgs e) {
 
+
+        //終了ボタン
+        private void btAppEnd_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        //データを選択したら表示
+        private void dgvReport_MouseClick(object sender, MouseEventArgs e) {
             Car selecedCar = _Cars[dgvReport.CurrentRow.Index];
             dtpDate.Value = selecedCar.Date;
             cbName.Text = selecedCar.RecoderName;
@@ -201,17 +213,6 @@ namespace CarReportSystem {
             tbReport.Text = selecedCar.Report;
             pictureBox1.Image = selecedCar.img;
 
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e) {
-            initButton();
-        }
-
-
-        //終了ボタン
-        private void btAppEnd_Click(object sender, EventArgs e) {
-            Application.Exit();
         }
     }
 }
