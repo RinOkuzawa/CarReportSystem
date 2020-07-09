@@ -1,5 +1,5 @@
 ﻿namespace CarReportSystem {
-    partial class Form1 {
+    partial class Form {
         /// <summary>
         /// 必要なデザイナー変数です。
         /// </summary>
@@ -55,9 +55,18 @@
             this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
             this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新規入力ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.名前を付けて保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssLabelTime = new System.Windows.Forms.StatusStrip();
+            this.sttsTime = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MakerG.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.tssLabelTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -108,8 +117,10 @@
             this.dgvReport.AllowUserToDeleteRows = false;
             this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReport.Location = new System.Drawing.Point(123, 291);
+            this.dgvReport.MultiSelect = false;
             this.dgvReport.Name = "dgvReport";
             this.dgvReport.RowTemplate.Height = 21;
+            this.dgvReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReport.Size = new System.Drawing.Size(619, 186);
             this.dgvReport.TabIndex = 6;
             this.dgvReport.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvReport_MouseClick);
@@ -247,6 +258,7 @@
             // 
             // btDeleteImage
             // 
+            this.btDeleteImage.Enabled = false;
             this.btDeleteImage.Location = new System.Drawing.Point(594, 31);
             this.btDeleteImage.Name = "btDeleteImage";
             this.btDeleteImage.Size = new System.Drawing.Size(75, 23);
@@ -347,17 +359,75 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(755, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(773, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // Form1
+            // ファイルToolStripMenuItem
+            // 
+            this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新規入力ToolStripMenuItem,
+            this.終了XToolStripMenuItem,
+            this.保存ToolStripMenuItem,
+            this.名前を付けて保存ToolStripMenuItem});
+            this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルToolStripMenuItem.Text = "ファイル(&F)";
+            this.ファイルToolStripMenuItem.Click += new System.EventHandler(this.ファイルToolStripMenuItem_Click);
+            // 
+            // 新規入力ToolStripMenuItem
+            // 
+            this.新規入力ToolStripMenuItem.Name = "新規入力ToolStripMenuItem";
+            this.新規入力ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.新規入力ToolStripMenuItem.Text = "新規入力";
+            this.新規入力ToolStripMenuItem.Click += new System.EventHandler(this.新規入力ToolStripMenuItem_Click);
+            // 
+            // 終了XToolStripMenuItem
+            // 
+            this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.終了XToolStripMenuItem.Text = "終了(&X)";
+            this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
+            // 
+            // 保存ToolStripMenuItem
+            // 
+            this.保存ToolStripMenuItem.Enabled = false;
+            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.保存ToolStripMenuItem.Text = "保存";
+            // 
+            // 名前を付けて保存ToolStripMenuItem
+            // 
+            this.名前を付けて保存ToolStripMenuItem.Name = "名前を付けて保存ToolStripMenuItem";
+            this.名前を付けて保存ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.名前を付けて保存ToolStripMenuItem.Text = "名前を付けて保存";
+            this.名前を付けて保存ToolStripMenuItem.Click += new System.EventHandler(this.名前を付けて保存ToolStripMenuItem_Click);
+            // 
+            // tssLabelTime
+            // 
+            this.tssLabelTime.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sttsTime});
+            this.tssLabelTime.Location = new System.Drawing.Point(0, 512);
+            this.tssLabelTime.Name = "tssLabelTime";
+            this.tssLabelTime.Size = new System.Drawing.Size(773, 22);
+            this.tssLabelTime.TabIndex = 12;
+            this.tssLabelTime.Text = "statusStrip1";
+            // 
+            // sttsTime
+            // 
+            this.sttsTime.Name = "sttsTime";
+            this.sttsTime.Size = new System.Drawing.Size(0, 17);
+            // 
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 518);
+            this.ClientSize = new System.Drawing.Size(773, 534);
+            this.Controls.Add(this.tssLabelTime);
             this.Controls.Add(this.MakerG);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvReport);
@@ -382,13 +452,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Form";
             this.Text = "試乗レポート管理システム";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MakerG.ResumeLayout(false);
             this.MakerG.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.tssLabelTime.ResumeLayout(false);
+            this.tssLabelTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,6 +502,13 @@
         private System.Windows.Forms.OpenFileDialog ofdOpenData;
         private System.Windows.Forms.SaveFileDialog sfdSaveData;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.StatusStrip tssLabelTime;
+        private System.Windows.Forms.ToolStripStatusLabel sttsTime;
+        private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新規入力ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 終了XToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 名前を付けて保存ToolStripMenuItem;
     }
 }
 
