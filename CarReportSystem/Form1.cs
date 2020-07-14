@@ -24,7 +24,7 @@ namespace CarReportSystem {
 
         public Form() {
             InitializeComponent();
-            dgvReport.DataSource = _Cars;
+            //dgvReport.DataSource = _Cars;
         }
         //クリアメソッド
         private void allClear() {
@@ -199,13 +199,14 @@ namespace CarReportSystem {
 
         //データを選択したら表示
         private void dgvReport_MouseClick(object sender, EventArgs e) {
-            Car selecedCar = _Cars[dgvReport.CurrentRow.Index];
-            dtpDate.Value = selecedCar.Date;
-            cbName.Text = selecedCar.RecoderName;
-            radioButtontrue();
-            cbCarName.Text = selecedCar.CarName;
-            tbReport.Text = selecedCar.Report;
-            pictureBox1.Image = selecedCar.img;
+            var test = dgvReport.CurrentRow.Cells[2].Value; //選択している行の指定したセルの値を取得
+            //Car selecedCar = _Cars[dgvReport.CurrentRow.Index];
+            //dtpDate.Value = selecedCar.Date;
+            //cbName.Text = selecedCar.RecoderName;
+            //radioButtontrue();
+            //cbCarName.Text = selecedCar.CarName;
+            //tbReport.Text = selecedCar.Report;
+            //pictureBox1.Image = selecedCar.img;
         }
 
         //保存ボタン
@@ -235,6 +236,9 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202011DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableAdapter.Fill(this.infosys202011DataSet.CarReport);
+            dgvReport.Columns[0].Visible = false; //IDを非表示にする
             initButton();
 
             timerUpdateStatusStrip = new Timer();
@@ -306,6 +310,24 @@ namespace CarReportSystem {
             }
         }
 
-
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (ofdOpenData.ShowDialog() == DialogResult.OK) {
+                using (FileStream fs = new FileStream(ofdOpenData.FileName, FileMode.Open))
+                    try {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        //逆シリアル化して読込
+                        _Cars = (BindingList<Car>)formatter.Deserialize(fs);
+                        //dgvのデータの中にデータをバインドされた_Carsを入れる
+                        dgvReport.DataSource = _Cars;
+                        //選択されている箇所を各コントロールへ表示
+                        dgvReport_MouseClick(sender, e);
+                        titlebarFileName(ofdOpenData.FileName);
+                    } catch (SerializationException a) {
+                        Console.WriteLine("Failed to deserialize. Reason: " + a.Message);
+                        throw;
+                    }
+                initButton();
+            }
+        }
     }
 }
