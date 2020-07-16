@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -76,25 +77,25 @@ namespace CarReportSystem {
         }
 
         private void radioButtontrue() {
-            Car selecedCar1 = this._Cars[dgvReport.CurrentRow.Index];
+            
 
-            switch (selecedCar1.Maker) {
-                case CarMaker.トヨタ:
+            switch (dgvReport.CurrentRow.Cells[3].Value.ToString()) {
+                case "トヨタ":
                     rbToyota.Checked = true;
                     break;
-                case CarMaker.日産:
+                case "日産":
                     rbNissan.Checked = true;
                     break;
-                case CarMaker.ホンダ:
+                case "ホンダ":
                     rbHonda.Checked = true;
                     break;
-                case CarMaker.スバル:
+                case "スバル":
                     rbSubaru.Checked = true;
                     break;
-                case CarMaker.外車:
+                case "外車":
                     rbGaikoku.Checked = true;
                     break;
-                case CarMaker.その他:
+                case "その他":
                     rbOther.Checked = true;
                     break;                    
             }
@@ -121,6 +122,7 @@ namespace CarReportSystem {
 
         //追加ボタン
         private void btAddArticle_Click(object sender, EventArgs e) {
+
             Car cars = new Car {
                 Date = dtpDate.Value,
                 RecoderName = cbName.Text,
@@ -199,7 +201,13 @@ namespace CarReportSystem {
 
         //データを選択したら表示
         private void dgvReport_MouseClick(object sender, EventArgs e) {
-            var test = dgvReport.CurrentRow.Cells[2].Value; //選択している行の指定したセルの値を取得
+            string Maker = dgvReport.CurrentRow.Cells[3].Value.ToString(); //選択している行の指定したセルの値を取得
+            radioButtontrue();
+            cbName.Text = dgvReport.CurrentRow.Cells[2].Value.ToString();
+            cbCarName.Text = dgvReport.CurrentRow.Cells[4].Value.ToString();
+            tbReport.Text = dgvReport.CurrentRow.Cells[5].Value.ToString();
+            dtpDate.Value = DateTime.Parse(dgvReport.CurrentRow.Cells[1].Value.ToString());
+
             //Car selecedCar = _Cars[dgvReport.CurrentRow.Index];
             //dtpDate.Value = selecedCar.Date;
             //cbName.Text = selecedCar.RecoderName;
@@ -329,5 +337,20 @@ namespace CarReportSystem {
                 initButton();
             }
         }
+
+        //バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte [] byteData) {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(byteData);
+            return img;
+        }
+        //Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img) {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] byteData = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return byteData;
+        }
+
+
     }
 }
