@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -13,7 +14,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CarReportSystem {
+    
 
     public partial class Form : System.Windows.Forms.Form {
 
@@ -37,19 +40,19 @@ namespace CarReportSystem {
              pictureBox1.Image = null;
         }
         //ボタンマスクメソッド
-        private void initButton() {
-            if (_Cars.Count > 0) {
-                btDeleteArticle.Enabled = true;
-                btUpdateArticle.Enabled = true;
-            } else {
-                btDeleteArticle.Enabled = false;
-                btUpdateArticle.Enabled = false;
-            }
+        //private void initButton() {
+        //    if (_Cars.Count > 0) {
+        //        btDeleteArticle.Enabled = true;
+        //        btUpdateArticle.Enabled = true;
+        //    } else {
+        //        btDeleteArticle.Enabled = false;
+        //        btUpdateArticle.Enabled = false;
+        //    }
 
-            if (pictureBox1.Image != null) {
-                btDeleteImage.Enabled = true;
-            }
-        }
+        //    if (pictureBox1.Image != null) {
+        //        btDeleteImage.Enabled = true;
+        //    }
+        //}
         //ラジオボタンメソッド
         private CarMaker ReMakerButton() {
             var RadioButtonChecked_InGroup = MakerG.Controls.OfType<RadioButton>().SingleOrDefault(rb => rb.Checked == true);
@@ -122,47 +125,73 @@ namespace CarReportSystem {
 
         //追加ボタン
         private void btAddArticle_Click(object sender, EventArgs e) {
+                carReportTableAdapter ta = new this.carReportTableAdapter();
+                infosys202011DataSet ds = new infosys202011DataSet();
+                // データを抽出します。
+                ta.Fill(ds.CarReport);
 
-            Car cars = new Car {
-                Date = dtpDate.Value,
-                RecoderName = cbName.Text,
-                Maker = ReMakerButton(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                img = pictureBox1.Image
-            };
-            this._Cars.Insert(0, cars);
-            //dgvReport.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            allClear();
-            initButton();
+                
+
+                // DataSetを編集(追加、編集、削除)します。
+
+                // 追加
+                infosys202011DataSet.CarReportRow addRow = ds.CarReport.NewCarReportRow();
+
+                addRow.CreatedDate = dtpDate.Value;
+                addRow.Author = cbName.Text;
+                //addRow.Maker = ;
+                addRow.Name = cbCarName.Text;
+                addRow.Report = tbReport.Text;
+                //addRow.Picture = ;
+                ds.CarReport.AddCarReportRow(addRow);
+
+
+
+
+            
+            
+
+            //Car cars = new Car {
+            //    Date = dtpDate.Value,
+            //    RecoderName = cbName.Text,
+            //    Maker = ReMakerButton(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    img = pictureBox1.Image
+            //};
+            //this._Cars.Insert(0, cars);
+            ////dgvReport.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            //allClear();
+            //initButton();
         }
 
         //削除ボタン
         private void btDeleteArticle_Click(object sender, EventArgs e) {
             Car selecedCar = this._Cars[dgvReport.CurrentRow.Index];
             _Cars.RemoveAt(dgvReport.CurrentRow.Index);
-            initButton();
+            //initButton();
 
 
         }
 
         //更新ボタン
         private void btUpdateArticle_Click(object sender, EventArgs e) {
-            Car selecedCar = this._Cars[dgvReport.CurrentRow.Index];
-            selecedCar.Date = dtpDate.Value;
-            selecedCar.RecoderName = cbName.Text;
-            selecedCar.Maker = ReMakerButton();
-            selecedCar.CarName = cbCarName.Text;
-            selecedCar.Report = tbReport.Text;
-            selecedCar.img = pictureBox1.Image;
-            initButton();
-            dgvReport.Refresh();
+            dgvReport.CurrentRow.Cells[1].Value = dtpDate.Value;
+            dgvReport.CurrentRow.Cells[2].Value = cbName.Text;
+            dgvReport.CurrentRow.Cells[4].Value = cbCarName.Text;
+            dgvReport.CurrentRow.Cells[5].Value = tbReport.Text;
+            dgvReport.CurrentRow.Cells[6].Value = pictureBox1.Image;
+
+            //データベース更新(反映)
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202011DataSet);
         }
 
         //画像開くボタン
         private void btOpenImage_Click(object sender, EventArgs e) {
             ofdOpenImage.ShowDialog();
-            initButton();
+            //initButton();
         }
 
         //画像削除ボタン
@@ -195,7 +224,7 @@ namespace CarReportSystem {
                         Console.WriteLine("Failed to deserialize. Reason: " + a.Message);
                         throw;
                     }
-                initButton();
+                //initButton();
             }
         }
 
@@ -244,10 +273,8 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202011DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportTableAdapter.Fill(this.infosys202011DataSet.CarReport);
-            dgvReport.Columns[0].Visible = false; //IDを非表示にする
-            initButton();
+            
+            //initButton();
 
             timerUpdateStatusStrip = new Timer();
             timerUpdateStatusStrip.Interval = 100;
@@ -284,58 +311,70 @@ namespace CarReportSystem {
         }
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
-            
+            //データベース更新(反映)
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202011DataSet);
 
-            BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream(FileName, FileMode.Create)) {
-                    try {
-                        //シリアル化して保存
-                        formatter.Serialize(fs, this._Cars);
-                    } catch (SerializationException a) {
-                        MessageBox.Show("Failed to serialize. Reason: " + a.Message);
-                        throw;
-                    }
-                }
+            //BinaryFormatter formatter = new BinaryFormatter();
+            //    using (FileStream fs = new FileStream(FileName, FileMode.Create)) {
+            //        try {
+            //            //シリアル化して保存
+            //            formatter.Serialize(fs, this._Cars);
+            //        } catch (SerializationException a) {
+            //            MessageBox.Show("Failed to serialize. Reason: " + a.Message);
+            //            throw;
+            //        }
+            //    }
             
         }
 
         private void 名前を付けて保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            //データベース更新(反映)
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202011DataSet);
 
-            if (sfdSaveData.ShowDialog() == DialogResult.OK) {
+            //if (sfdSaveData.ShowDialog() == DialogResult.OK) {
 
-                //ファイルストリームを生成
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create)) {
-                    try {
-                        //シリアル化して保存
-                        formatter.Serialize(fs, this._Cars);
-                        titlebarFileName(sfdSaveData.FileName);
-                    } catch (SerializationException a) {
-                        Console.WriteLine("Failed to serialize. Reason: " + a.Message);
-                        throw;
-                    }
-                }
-            }
+            //    //ファイルストリームを生成
+            //    BinaryFormatter formatter = new BinaryFormatter();
+            //    using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create)) {
+            //        try {
+            //            //シリアル化して保存
+            //            formatter.Serialize(fs, this._Cars);
+            //            titlebarFileName(sfdSaveData.FileName);
+            //        } catch (SerializationException a) {
+            //            Console.WriteLine("Failed to serialize. Reason: " + a.Message);
+            //            throw;
+            //        }
+            //    }
+            //}
+
         }
 
         private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (ofdOpenData.ShowDialog() == DialogResult.OK) {
-                using (FileStream fs = new FileStream(ofdOpenData.FileName, FileMode.Open))
-                    try {
-                        BinaryFormatter formatter = new BinaryFormatter();
-                        //逆シリアル化して読込
-                        _Cars = (BindingList<Car>)formatter.Deserialize(fs);
-                        //dgvのデータの中にデータをバインドされた_Carsを入れる
-                        dgvReport.DataSource = _Cars;
-                        //選択されている箇所を各コントロールへ表示
-                        dgvReport_MouseClick(sender, e);
-                        titlebarFileName(ofdOpenData.FileName);
-                    } catch (SerializationException a) {
-                        Console.WriteLine("Failed to deserialize. Reason: " + a.Message);
-                        throw;
-                    }
-                initButton();
-            }
+            // TODO: このコード行はデータを 'infosys202011DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableAdapter.Fill(this.infosys202011DataSet.CarReport);
+            dgvReport.Columns[0].Visible = false; //IDを非表示にする
+
+            //    if (ofdOpenData.ShowDialog() == DialogResult.OK) {
+            //        using (FileStream fs = new FileStream(ofdOpenData.FileName, FileMode.Open))
+            //            try {
+            //                BinaryFormatter formatter = new BinaryFormatter();
+            //                //逆シリアル化して読込
+            //                _Cars = (BindingList<Car>)formatter.Deserialize(fs);
+            //                //dgvのデータの中にデータをバインドされた_Carsを入れる
+            //                dgvReport.DataSource = _Cars;
+            //                //選択されている箇所を各コントロールへ表示
+            //                dgvReport_MouseClick(sender, e);
+            //                titlebarFileName(ofdOpenData.FileName);
+            //            } catch (SerializationException a) {
+            //                Console.WriteLine("Failed to deserialize. Reason: " + a.Message);
+            //                throw;
+            //            }
+            //        initButton();
+            //    }
         }
 
         //バイト配列をImageオブジェクトに変換

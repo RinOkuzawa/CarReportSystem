@@ -445,21 +445,21 @@
             // 新規入力ToolStripMenuItem
             // 
             this.新規入力ToolStripMenuItem.Name = "新規入力ToolStripMenuItem";
-            this.新規入力ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新規入力ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.新規入力ToolStripMenuItem.Text = "新規入力";
             this.新規入力ToolStripMenuItem.Click += new System.EventHandler(this.新規入力ToolStripMenuItem_Click);
             // 
             // 終了XToolStripMenuItem
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
             // 接続ToolStripMenuItem
             // 
             this.接続ToolStripMenuItem.Name = "接続ToolStripMenuItem";
-            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.接続ToolStripMenuItem.Text = "接続";
             this.接続ToolStripMenuItem.Click += new System.EventHandler(this.接続ToolStripMenuItem_Click);
             // 
@@ -467,14 +467,14 @@
             // 
             this.保存ToolStripMenuItem.Enabled = false;
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // 名前を付けて保存ToolStripMenuItem
             // 
             this.名前を付けて保存ToolStripMenuItem.Name = "名前を付けて保存ToolStripMenuItem";
-            this.名前を付けて保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.名前を付けて保存ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.名前を付けて保存ToolStripMenuItem.Text = "名前を付けて保存";
             this.名前を付けて保存ToolStripMenuItem.Click += new System.EventHandler(this.名前を付けて保存ToolStripMenuItem_Click);
             // 

@@ -40,7 +40,7 @@ SELECT id, CreatedDate, Author, Maker, Name, Report, Picture FROM CarReport WHER
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT id, CreatedDate, Author, Maker, Name, Report, Picture FROM dbo.CarReport</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -89,7 +89,7 @@ SELECT id, CreatedDate, Author, Maker, Name, Report, Picture FROM CarReport WHER
   <xs:element name="infosys202011DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="infosys202011DataSet" msprop:Generator_UserDSName="infosys202011DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CarReport" msprop:Generator_TableClassName="CarReportDataTable" msprop:Generator_TableVarName="tableCarReport" msprop:Generator_TablePropName="CarReport" msprop:Generator_RowDeletingName="CarReportRowDeleting" msprop:Generator_RowChangingName="CarReportRowChanging" msprop:Generator_RowEvHandlerName="CarReportRowChangeEventHandler" msprop:Generator_RowDeletedName="CarReportRowDeleted" msprop:Generator_UserTableName="CarReport" msprop:Generator_RowChangedName="CarReportRowChanged" msprop:Generator_RowEvArgName="CarReportRowChangeEvent" msprop:Generator_RowClassName="CarReportRow">
+        <xs:element name="CarReport" msprop:Generator_TableClassName="CarReportDataTable" msprop:Generator_TableVarName="tableCarReport" msprop:Generator_RowChangedName="CarReportRowChanged" msprop:Generator_TablePropName="CarReport" msprop:Generator_RowDeletingName="CarReportRowDeleting" msprop:Generator_RowChangingName="CarReportRowChanging" msprop:Generator_RowEvHandlerName="CarReportRowChangeEventHandler" msprop:Generator_RowDeletedName="CarReportRowDeleted" msprop:Generator_RowClassName="CarReportRow" msprop:Generator_UserTableName="CarReport" msprop:Generator_RowEvArgName="CarReportRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
