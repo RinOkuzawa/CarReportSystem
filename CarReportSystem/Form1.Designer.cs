@@ -38,7 +38,7 @@
             this.pictureDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.carReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.infosys202011DataSet = new CarReportSystem.infosys202011DataSet();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbImage = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202011DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.MakerG.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tssLabelTime.SuspendLayout();
@@ -192,14 +192,14 @@
             this.infosys202011DataSet.DataSetName = "infosys202011DataSet";
             this.infosys202011DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // pictureBox1
+            // pbImage
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(462, 81);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 153);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImage.Location = new System.Drawing.Point(462, 81);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(180, 153);
+            this.pbImage.TabIndex = 3;
+            this.pbImage.TabStop = false;
             // 
             // label2
             // 
@@ -510,7 +510,7 @@
             this.ClientSize = new System.Drawing.Size(773, 534);
             this.Controls.Add(this.tssLabelTime);
             this.Controls.Add(this.MakerG);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbImage);
             this.Controls.Add(this.dgvReport);
             this.Controls.Add(this.btAppEnd);
             this.Controls.Add(this.btDeleteArticle);
@@ -537,7 +537,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202011DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.MakerG.ResumeLayout(false);
             this.MakerG.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -556,7 +556,7 @@
         private System.Windows.Forms.ComboBox cbName;
         private System.Windows.Forms.TextBox tbReport;
         private System.Windows.Forms.DataGridView dgvReport;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
