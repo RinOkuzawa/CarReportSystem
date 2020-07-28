@@ -163,10 +163,20 @@ namespace CarReportSystem {
 
         //削除ボタン
         private void btDeleteArticle_Click(object sender, EventArgs e) {
-            
+            DialogResult dr = MessageBox.Show("データを削除してもいいですか？", "確認", MessageBoxButtons.OKCancel);
+            if (dr == System.Windows.Forms.DialogResult.OK) {
+                carReportTableAdapter.Delete(int.Parse(dgvReport.CurrentRow.Cells[0].Value.ToString()),
+                    DateTime.Parse(dgvReport.CurrentRow.Cells[1].Value.ToString()),
+                    dgvReport.CurrentRow.Cells[2].Value.ToString(),
+                    dgvReport.CurrentRow.Cells[3].Value.ToString(),
+                    dgvReport.CurrentRow.Cells[4].Value.ToString(),
+                    dgvReport.CurrentRow.Cells[5].Value.ToString()
+                );
 
-            initButton();
+                保存ToolStripMenuItem_Click(sender, e);
+                initButton();
 
+            }
 
         }
 
@@ -282,6 +292,8 @@ namespace CarReportSystem {
             timerUpdateStatusStrip.Tick += TimerUpdateStatusStrip_Tick;
 
             pbImage.SizeMode = PictureBoxSizeMode.Zoom;
+
+            
             
         }
         //タイマー
@@ -357,6 +369,8 @@ namespace CarReportSystem {
             return byteData;
         }
 
-
+        private void btSearchExe_Click(object sender, EventArgs e) {
+            this.carReportTableAdapter.FillByCarName(this.infosys202011DataSet.CarReport, tbSearchCarName.Text, cbSearchMaker.Text, dtpSearchDate.Value.ToString());
+        }
     }
 }

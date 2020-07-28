@@ -68,12 +68,16 @@
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tssLabelTime = new System.Windows.Forms.StatusStrip();
             this.sttsTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.carReportTableAdapter = new CarReportSystem.infosys202011DataSetTableAdapters.CarReportTableAdapter();
-            this.tableAdapterManager = new CarReportSystem.infosys202011DataSetTableAdapters.TableAdapterManager();
             this.tbSearchCarName = new System.Windows.Forms.TextBox();
             this.btSearchExe = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSearchMaker = new System.Windows.Forms.ComboBox();
+            this.dtpSearchDate = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.labelCar = new System.Windows.Forms.Label();
+            this.carReportTableAdapter = new CarReportSystem.infosys202011DataSetTableAdapters.CarReportTableAdapter();
+            this.tableAdapterManager = new CarReportSystem.infosys202011DataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202011DataSet)).BeginInit();
@@ -436,7 +440,7 @@
             // 接続ToolStripMenuItem
             // 
             this.接続ToolStripMenuItem.Name = "接続ToolStripMenuItem";
-            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.接続ToolStripMenuItem.Text = "接続(&O)";
             this.接続ToolStripMenuItem.Click += new System.EventHandler(this.接続ToolStripMenuItem_Click);
             // 
@@ -444,14 +448,14 @@
             // 
             this.保存ToolStripMenuItem.Enabled = false;
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.保存ToolStripMenuItem.Text = "保存(&S)";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // 終了XToolStripMenuItem
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
@@ -470,16 +474,6 @@
             this.sttsTime.Name = "sttsTime";
             this.sttsTime.Size = new System.Drawing.Size(0, 17);
             // 
-            // carReportTableAdapter
-            // 
-            this.carReportTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CarReportTableAdapter = this.carReportTableAdapter;
-            this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202011DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // tbSearchCarName
             // 
             this.tbSearchCarName.Location = new System.Drawing.Point(66, 18);
@@ -489,25 +483,71 @@
             // 
             // btSearchExe
             // 
-            this.btSearchExe.Location = new System.Drawing.Point(115, 53);
+            this.btSearchExe.Location = new System.Drawing.Point(102, 124);
             this.btSearchExe.Name = "btSearchExe";
             this.btSearchExe.Size = new System.Drawing.Size(75, 23);
             this.btSearchExe.TabIndex = 22;
             this.btSearchExe.Text = "実行";
             this.btSearchExe.UseVisualStyleBackColor = true;
+            this.btSearchExe.Click += new System.EventHandler(this.btSearchExe_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox1.Controls.Add(this.cbSearchMaker);
+            this.groupBox1.Controls.Add(this.dtpSearchDate);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.labelCar);
             this.groupBox1.Controls.Add(this.btSearchExe);
             this.groupBox1.Controls.Add(this.tbSearchCarName);
             this.groupBox1.Location = new System.Drawing.Point(786, 81);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 109);
+            this.groupBox1.Size = new System.Drawing.Size(294, 153);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索";
+            // 
+            // cbSearchMaker
+            // 
+            this.cbSearchMaker.FormattingEnabled = true;
+            this.cbSearchMaker.Items.AddRange(new object[] {
+            "トヨタ",
+            "日産",
+            "ホンダ",
+            "スバル",
+            "外車",
+            "その他",
+            "DEFAULT"});
+            this.cbSearchMaker.Location = new System.Drawing.Point(66, 69);
+            this.cbSearchMaker.Name = "cbSearchMaker";
+            this.cbSearchMaker.Size = new System.Drawing.Size(211, 20);
+            this.cbSearchMaker.TabIndex = 24;
+            // 
+            // dtpSearchDate
+            // 
+            this.dtpSearchDate.Location = new System.Drawing.Point(66, 43);
+            this.dtpSearchDate.Name = "dtpSearchDate";
+            this.dtpSearchDate.Size = new System.Drawing.Size(211, 19);
+            this.dtpSearchDate.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 71);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 12);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "メーカー";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 46);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "日付";
             // 
             // labelCar
             // 
@@ -517,6 +557,16 @@
             this.labelCar.Size = new System.Drawing.Size(29, 12);
             this.labelCar.TabIndex = 22;
             this.labelCar.Text = "車名";
+            // 
+            // carReportTableAdapter
+            // 
+            this.carReportTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CarReportTableAdapter = this.carReportTableAdapter;
+            this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202011DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // Form
             // 
@@ -618,6 +668,10 @@
         private System.Windows.Forms.Button btSearchExe;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelCar;
+        private System.Windows.Forms.DateTimePicker dtpSearchDate;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbSearchMaker;
     }
 }
 
