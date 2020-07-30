@@ -370,7 +370,11 @@ namespace CarReportSystem {
         }
 
         private void btSearchExe_Click(object sender, EventArgs e) {
-            this.carReportTableAdapter.FillByCarName(this.infosys202011DataSet.CarReport, tbSearchCarName.Text, cbSearchMaker.Text, dtpSearchDate.Value.ToString());
+            if (checkDateSearch.Checked) {
+                this.carReportTableAdapter.FillByDateNull(this.infosys202011DataSet.CarReport, tbSearchCarName.Text, cbSearchMaker.Text,tbAuthorSearch.Text);
+            } else {
+                this.carReportTableAdapter.FillByCarName(this.infosys202011DataSet.CarReport, tbSearchCarName.Text, cbSearchMaker.Text, dtpSearchDate.Value.ToString(), tbAuthorSearch.Text);
+            }
         }
     }
 }

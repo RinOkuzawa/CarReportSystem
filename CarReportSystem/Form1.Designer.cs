@@ -71,6 +71,9 @@
             this.tbSearchCarName = new System.Windows.Forms.TextBox();
             this.btSearchExe = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbAuthorSearch = new System.Windows.Forms.TextBox();
+            this.checkDateSearch = new System.Windows.Forms.CheckBox();
             this.cbSearchMaker = new System.Windows.Forms.ComboBox();
             this.dtpSearchDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -78,6 +81,8 @@
             this.labelCar = new System.Windows.Forms.Label();
             this.carReportTableAdapter = new CarReportSystem.infosys202011DataSetTableAdapters.CarReportTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202011DataSetTableAdapters.TableAdapterManager();
+            this.rbAndSearch = new System.Windows.Forms.RadioButton();
+            this.rbOrSearch = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202011DataSet)).BeginInit();
@@ -423,7 +428,7 @@
             this.ファイルToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1129, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1172, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -465,7 +470,7 @@
             this.sttsTime});
             this.tssLabelTime.Location = new System.Drawing.Point(0, 512);
             this.tssLabelTime.Name = "tssLabelTime";
-            this.tssLabelTime.Size = new System.Drawing.Size(1129, 22);
+            this.tssLabelTime.Size = new System.Drawing.Size(1172, 22);
             this.tssLabelTime.TabIndex = 0;
             this.tssLabelTime.Text = "statusStrip1";
             // 
@@ -476,14 +481,14 @@
             // 
             // tbSearchCarName
             // 
-            this.tbSearchCarName.Location = new System.Drawing.Point(66, 18);
+            this.tbSearchCarName.Location = new System.Drawing.Point(66, 122);
             this.tbSearchCarName.Name = "tbSearchCarName";
             this.tbSearchCarName.Size = new System.Drawing.Size(211, 19);
             this.tbSearchCarName.TabIndex = 21;
             // 
             // btSearchExe
             // 
-            this.btSearchExe.Location = new System.Drawing.Point(102, 124);
+            this.btSearchExe.Location = new System.Drawing.Point(213, 202);
             this.btSearchExe.Name = "btSearchExe";
             this.btSearchExe.Size = new System.Drawing.Size(75, 23);
             this.btSearchExe.TabIndex = 22;
@@ -494,6 +499,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox1.Controls.Add(this.rbOrSearch);
+            this.groupBox1.Controls.Add(this.rbAndSearch);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.tbAuthorSearch);
+            this.groupBox1.Controls.Add(this.checkDateSearch);
             this.groupBox1.Controls.Add(this.cbSearchMaker);
             this.groupBox1.Controls.Add(this.dtpSearchDate);
             this.groupBox1.Controls.Add(this.label9);
@@ -501,12 +511,38 @@
             this.groupBox1.Controls.Add(this.labelCar);
             this.groupBox1.Controls.Add(this.btSearchExe);
             this.groupBox1.Controls.Add(this.tbSearchCarName);
-            this.groupBox1.Location = new System.Drawing.Point(786, 81);
+            this.groupBox1.Location = new System.Drawing.Point(823, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 153);
+            this.groupBox1.Size = new System.Drawing.Size(294, 231);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(19, 74);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "記録者";
+            // 
+            // tbAuthorSearch
+            // 
+            this.tbAuthorSearch.Location = new System.Drawing.Point(66, 71);
+            this.tbAuthorSearch.Name = "tbAuthorSearch";
+            this.tbAuthorSearch.Size = new System.Drawing.Size(211, 19);
+            this.tbAuthorSearch.TabIndex = 26;
+            // 
+            // checkDateSearch
+            // 
+            this.checkDateSearch.AutoSize = true;
+            this.checkDateSearch.Location = new System.Drawing.Point(66, 49);
+            this.checkDateSearch.Name = "checkDateSearch";
+            this.checkDateSearch.Size = new System.Drawing.Size(41, 16);
+            this.checkDateSearch.TabIndex = 25;
+            this.checkDateSearch.Text = "ダメ";
+            this.checkDateSearch.UseVisualStyleBackColor = true;
             // 
             // cbSearchMaker
             // 
@@ -519,14 +555,14 @@
             "外車",
             "その他",
             "DEFAULT"});
-            this.cbSearchMaker.Location = new System.Drawing.Point(66, 69);
+            this.cbSearchMaker.Location = new System.Drawing.Point(66, 96);
             this.cbSearchMaker.Name = "cbSearchMaker";
             this.cbSearchMaker.Size = new System.Drawing.Size(211, 20);
             this.cbSearchMaker.TabIndex = 24;
             // 
             // dtpSearchDate
             // 
-            this.dtpSearchDate.Location = new System.Drawing.Point(66, 43);
+            this.dtpSearchDate.Location = new System.Drawing.Point(66, 23);
             this.dtpSearchDate.Name = "dtpSearchDate";
             this.dtpSearchDate.Size = new System.Drawing.Size(211, 19);
             this.dtpSearchDate.TabIndex = 23;
@@ -534,7 +570,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 71);
+            this.label9.Location = new System.Drawing.Point(17, 99);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 12);
             this.label9.TabIndex = 22;
@@ -543,7 +579,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 46);
+            this.label8.Location = new System.Drawing.Point(17, 28);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 22;
@@ -552,7 +588,7 @@
             // labelCar
             // 
             this.labelCar.AutoSize = true;
-            this.labelCar.Location = new System.Drawing.Point(17, 21);
+            this.labelCar.Location = new System.Drawing.Point(17, 125);
             this.labelCar.Name = "labelCar";
             this.labelCar.Size = new System.Drawing.Size(29, 12);
             this.labelCar.TabIndex = 22;
@@ -568,11 +604,33 @@
             this.tableAdapterManager.CarReportTableAdapter = this.carReportTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202011DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // rbAndSearch
+            // 
+            this.rbAndSearch.AutoSize = true;
+            this.rbAndSearch.Location = new System.Drawing.Point(60, 169);
+            this.rbAndSearch.Name = "rbAndSearch";
+            this.rbAndSearch.Size = new System.Drawing.Size(47, 16);
+            this.rbAndSearch.TabIndex = 28;
+            this.rbAndSearch.TabStop = true;
+            this.rbAndSearch.Text = "AND";
+            this.rbAndSearch.UseVisualStyleBackColor = true;
+            // 
+            // rbOrSearch
+            // 
+            this.rbOrSearch.AutoSize = true;
+            this.rbOrSearch.Location = new System.Drawing.Point(113, 169);
+            this.rbOrSearch.Name = "rbOrSearch";
+            this.rbOrSearch.Size = new System.Drawing.Size(39, 16);
+            this.rbOrSearch.TabIndex = 28;
+            this.rbOrSearch.TabStop = true;
+            this.rbOrSearch.Text = "OR";
+            this.rbOrSearch.UseVisualStyleBackColor = true;
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 534);
+            this.ClientSize = new System.Drawing.Size(1172, 534);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tssLabelTime);
             this.Controls.Add(this.MakerG);
@@ -672,6 +730,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbSearchMaker;
+        private System.Windows.Forms.CheckBox checkDateSearch;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbAuthorSearch;
+        private System.Windows.Forms.RadioButton rbOrSearch;
+        private System.Windows.Forms.RadioButton rbAndSearch;
     }
 }
 
